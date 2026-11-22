@@ -1,0 +1,431 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.85rem, 2vh, 1.35rem);
+  width: 100%;
+  max-width: 1400px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: clamp(0.75rem, 2.2vh, 1.75rem) clamp(0.85rem, 3vw, 2.25rem);
+}
+
+/* Escritorio: barra de pestañas superior limpia */
+.nav {
+  display: inline-flex;
+  align-self: flex-start;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.navItem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1.05rem;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.navItem:hover {
+  color: var(--text);
+}
+
+.navItem[data-active='true'] {
+  color: var(--text);
+  background: color-mix(in srgb, var(--sky) 14%, var(--surface));
+  border-color: color-mix(in srgb, var(--sky) 35%, transparent);
+}
+
+.navIcon {
+  font-size: 1rem;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.85rem, 2vh, 1.25rem);
+}
+
+/* Tarjeta de control de bomba */
+.pumpCard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding: clamp(0.85rem, 1.8vh, 1.2rem) clamp(1rem, 2vw, 1.4rem);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.pumpCard[data-active='true'] {
+  border-color: color-mix(in srgb, var(--sky) 55%, transparent);
+  background: linear-gradient(
+    120deg,
+    color-mix(in srgb, var(--sky) 16%, var(--surface)),
+    var(--surface) 75%
+  );
+}
+
+.pumpInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.pumpEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sky);
+}
+
+.pumpDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.pumpCard[data-active='true'] .pumpDot {
+  background: var(--sky);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--sky) 25%, transparent);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.pumpSubtitle {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.pumpError {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--red);
+}
+
+.pumpBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.35rem;
+  font: inherit;
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--sky);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s, transform 0.15s;
+}
+
+.pumpBtn[data-active='true'] {
+  background: var(--orange);
+}
+
+.pumpBtn:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+.pumpBtn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.pumpBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.6rem, 1.5vw, 1.25rem);
+}
+
+.chartsSection {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.8vh, 1.15rem);
+  flex: 1;
+  min-height: 0;
+}
+
+.chartsHeader {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.statsBar {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding: 0.7rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.statGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.statLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.statValues {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.84rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.statValues strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.statDivider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border);
+}
+
+.exportBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  align-self: flex-start;
+  padding: 0.55rem 0.9rem;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.exportBtn:hover:not(:disabled) {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--sky) 45%, var(--border));
+  background: color-mix(in srgb, var(--sky) 8%, var(--surface));
+}
+
+.exportBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.charts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.8vw, 1.25rem);
+  flex: 1;
+  min-height: 300px;
+}
+
+.chartSlot {
+  display: flex;
+  min-height: 280px;
+}
+
+.chartSlot > * {
+  flex: 1;
+}
+
+.wateringLogCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.wateringLogHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.wateringLogTitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.wateringLogTitle svg {
+  color: var(--sky);
+}
+
+.wateringLogCount {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.wateringLogEmpty {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.wateringLogList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.wateringLogChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  background: color-mix(in srgb, var(--sky) 12%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--sky) 30%, transparent);
+  border-radius: 999px;
+  font-variant-numeric: tabular-nums;
+}
+
+.wateringLogDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sky);
+}
+
+@media (max-width: 1080px) {
+  .charts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.footer {
+  font-size: 0.75rem;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* Móvil y tablet vertical: barra de navegación inferior fija y tarjetas apiladas */
+@media (max-width: 720px) {
+  .app {
+    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom));
+  }
+
+  .nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 40;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.35rem;
+    padding: 0.45rem 0.75rem calc(0.45rem + env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter: blur(12px);
+    border: none;
+    border-top: 1px solid var(--border);
+    border-radius: 0;
+  }
+
+  .navItem {
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.45rem 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .pumpBtn {
+    width: 100%;
+  }
+
+  .chartsHeader {
+    flex-direction: column;
+  }
+
+  .statDivider {
+    display: none;
+  }
+
+  .exportBtn {
+    align-self: flex-end;
+  }
+
+  .charts {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .chartSlot {
+    min-height: 240px;
+  }
+}

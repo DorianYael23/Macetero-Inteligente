@@ -1,0 +1,149 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-bottom: clamp(0.5rem, 1.6vh, 1.25rem);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  font-size: 1.5rem;
+  color: var(--green);
+  background: var(--brand-bg);
+  border: 1px solid var(--brand-border);
+  border-radius: 14px;
+}
+
+.title {
+  font-size: clamp(1.25rem, 3vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin-top: 2px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.updated {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.pill {
+  --tone: var(--sky);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.9rem 0.4rem 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tone) 35%, transparent);
+  border-radius: 999px;
+  transition: color 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.pill[data-state='online'] {
+  --tone: var(--green);
+}
+
+.pill[data-state='offline'] {
+  --tone: var(--red);
+}
+
+.dotWrap {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+}
+
+.dot,
+.ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--tone);
+}
+
+.ripple {
+  display: none;
+  opacity: 0;
+}
+
+.pill[data-state='online'] .ripple {
+  display: block;
+}
+
+.wifiBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.42rem 0.85rem;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--track);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.wifiBtn:hover {
+  color: var(--green);
+  border-color: var(--brand-border);
+  background: var(--brand-bg);
+}
+
+.wifiBtn:active {
+  transform: scale(0.97);
+}
+
+.wifiIcon {
+  font-size: 0.95rem;
+  color: var(--green);
+}
+
+@media (max-height: 700px) {
+  .subtitle {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .subtitle,
+  .updated {
+    display: none;
+  }
+
+  .logo {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,121 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+    gap: clamp(0.4rem, 1.2vh, 1rem);
+  min-width: 0;
+  padding: clamp(0.7rem, 1.8vh, 1.25rem) clamp(0.8rem, 1.6vw, 1.4rem);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+/* Brillo suave del color de acento en la esquina */
+.card::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%);
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.25rem;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-radius: 12px;
+}
+
+.label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.sensor {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  transform-origin: left center;
+  font-variant-numeric: tabular-nums;
+}
+
+.number {
+  font-size: clamp(1.7rem, 5.5vh, 3.1rem);
+    font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.unit {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--accent) 70%, var(--muted));
+}
+
+.track {
+  height: 6px;
+  overflow: hidden;
+  background: var(--track);
+  border-radius: 999px;
+}
+
+.bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 60%, transparent), var(--accent));
+  border-radius: 999px;
+  transform-origin: left center;
+}
+@media (max-height: 700px) {
+  .sensor {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .icon,
+  .sensor,
+  .card::before {
+    display: none;
+  }
+
+  .label {
+    font-size: 0.72rem;
+    line-height: 1.2;
+  }
+
+  .number {
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+
+  .unit {
+    font-size: 0.8rem;
+  }
+}

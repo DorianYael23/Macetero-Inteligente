@@ -1,0 +1,105 @@
+/* Estilos globales: variables de diseño y reset mínimo */
+:root {
+  color-scheme: dark;
+
+  --bg: #0b1120;
+  --surface: #121b2e;
+  --border: #233047;
+  --text: #e6edf7;
+  --muted: #8a9bb4;
+
+  --sky: #38bdf8;
+  --amber: #fbbf24;
+  --violet: #a78bfa;
+  --green: #34d399;
+  --orange: #fb923c;
+  --red: #f87171;
+
+  --page-glow-sky: rgba(56, 189, 248, 0.1);
+  --page-glow-green: rgba(52, 211, 153, 0.08);
+  --brand-bg: rgba(52, 211, 153, 0.12);
+  --brand-border: rgba(52, 211, 153, 0.3);
+  --track: rgba(148, 163, 184, 0.14);
+  --grid: rgba(148, 163, 184, 0.12);
+  --plant-pot: #c4623a;
+  --plant-rim: #dc7a4d;
+  --plant-cavity: #2a1a14;
+  --plant-soil: #3a2a1f;
+  --plant-drop: #7dd3fc;
+  --plant-spark: #bbf7d0;
+
+  --radius: 18px;
+
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+
+    --bg: #f4f7fb;
+    --surface: #ffffff;
+    --border: #d7e0eb;
+    --text: #1e293b;
+    --muted: #64748b;
+
+    --sky: #0284c7;
+    --amber: #d97706;
+    --violet: #7c3aed;
+    --green: #059669;
+    --orange: #ea580c;
+    --red: #dc2626;
+
+    --page-glow-sky: rgba(14, 165, 233, 0.1);
+    --page-glow-green: rgba(16, 185, 129, 0.08);
+    --brand-bg: rgba(16, 185, 129, 0.1);
+    --brand-border: rgba(5, 150, 105, 0.3);
+    --track: rgba(100, 116, 139, 0.16);
+    --grid: rgba(100, 116, 139, 0.14);
+    --plant-pot: #c96a43;
+    --plant-rim: #dc8056;
+    --plant-cavity: #42261c;
+    --plant-soil: #513827;
+    --plant-drop: #0284c7;
+    --plant-spark: #16a34a;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(1100px 560px at 8% -10%, var(--page-glow-sky), transparent 60%),
+    radial-gradient(900px 480px at 100% 0%, var(--page-glow-green), transparent 55%), var(--bg);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

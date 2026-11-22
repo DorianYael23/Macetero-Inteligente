@@ -1,0 +1,104 @@
+.scene {
+  display: block;
+  width: auto;
+  height: 100%;
+  aspect-ratio: 200 / 220;
+  overflow: visible;
+
+  /* Paleta por defecto (cargando) */
+  --leaf: #4ade80;
+  --leaf-dark: #16a34a;
+  --glow: rgba(56, 189, 248, 0.45);
+  transition: filter 0.6s;
+}
+
+.scene[data-status='healthy'] {
+  --leaf: #34d399;
+  --leaf-dark: #059669;
+  --glow: rgba(52, 211, 153, 0.5);
+}
+
+.scene[data-status='watering'] {
+  --leaf: #b8b04a;
+  --leaf-dark: #8a7d2e;
+  --glow: rgba(251, 146, 60, 0.5);
+}
+
+.scene[data-status='offline'] {
+  --leaf: #64748b;
+  --leaf-dark: #475569;
+  --glow: rgba(248, 113, 113, 0.3);
+  filter: grayscale(0.7) opacity(0.75);
+}
+
+.glow {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+.glowStop {
+  stop-color: var(--glow);
+  transition: stop-color 0.8s;
+}
+
+.pot {
+  fill: var(--plant-pot);
+}
+
+.rim {
+  fill: var(--plant-rim);
+}
+
+.cavity {
+  fill: var(--plant-cavity);
+}
+
+.moisture {
+  fill: var(--sky);
+  fill-opacity: 0.8;
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.soil {
+  fill: var(--plant-soil);
+}
+
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.stem {
+  stroke: var(--leaf-dark);
+  transition: stroke 0.8s;
+}
+
+.leafGroup {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+}
+
+.leaf {
+  fill: var(--leaf);
+  transition: fill 0.8s;
+}
+
+.vein {
+  fill: none;
+  stroke: var(--leaf-dark);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.55;
+  transition: stroke 0.8s;
+}
+
+.drop {
+  fill: var(--plant-drop);
+  opacity: 0;
+}
+
+.spark {
+  fill: var(--plant-spark);
+  opacity: 0;
+}
